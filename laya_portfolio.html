@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laya Ibrahim Bambavoussé OUEDRAOGO - Expert en Communication & Gestion</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 35, 126, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: #ffd700;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ffd700;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #1a237e 0%, #3949ab 50%, #5c6bc0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ffd700, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero .distinctions {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #1a237e;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Sections */
+        .section {
+            padding: 100px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1a237e;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            border-radius: 2px;
+        }
+
+        /* Competences */
+        .competences-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .competence-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid #1a237e;
+        }
+
+        .competence-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .competence-card h3 {
+            color: #1a237e;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .competence-card ul {
+            list-style: none;
+        }
+
+        .competence-card li {
+            padding: 0.3rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .competence-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        /* Experience */
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: linear-gradient(to bottom, #1a237e, #ffd700);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background: inherit;
+            width: 50%;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background: white;
+            position: relative;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .timeline-content h3 {
+            color: #1a237e;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-date {
+            color: #ffd700;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        /* Skills Progress */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #1a237e;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(45deg, #1a237e, #ffd700);
+            border-radius: 4px;
+            transition: width 2s ease-in-out;
+        }
+
+        /* Contact */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #1a237e, #3949ab);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #1a237e;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #1a237e;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a237e;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0%;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations on scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">LIBO</a>
+            <ul class="nav-menu">
+                <li><a href="#home">Accueil</a></li>
+                <li><a href="#competences">Compétences</a></li>
+                <li><a href="#experience">Expérience</a></li>
+                <li><a href="#formation">Formation</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Laya Ibrahim Bambavoussé OUEDRAOGO</h1>
+            <p class="subtitle">Expert en Communication Digitale, Gestion Administrative & Leadership</p>
+            <div class="distinctions">
+                🏆 Chevalier de l'Ordre des Palmes Académiques
+            </div>
+            <a href="#contact" class="cta-button">Collaborons Ensemble</a>
+        </div>
+    </section>
+
+    <!-- Compétences -->
+    <section id="competences" class="section">
+        <h2 class="section-title fade-in">Domaines d'Excellence</h2>
+        <div class="competences-grid">
+            <div class="competence-card fade-in">
+                <h3>🎯 Communication & Relations Publiques</h3>
+                <ul>
+                    <li>Stratégies de communication digitale</li>
+                    <li>Gestion des réseaux sociaux</li>
+                    <li>Relations presse et médias</li>
+                    <li>Conception de campagnes publicitaires</li>
+                    <li>Formation en communication orale et écrite</li>
+                </ul>
+            </div>
+            <div class="competence-card fade-in">
+                <h3>💻 Technologies & Digital</h3>
+                <ul>
+                    <li>Administration de bases de données</li>
+                    <li>Développement web et plateformes</li>
+                    <li>Montage vidéo et audio professionnel</li>
+                    <li>Référencement SEO</li>
+                    <li>Outils collaboratifs et MOOC</li>
+                </ul>
+            </div>
+            <div class="competence-card fade-in">
+                <h3>🏢 Management & Leadership</h3>
+                <ul>
+                    <li>Gestion d'équipes multidisciplinaires</li>
+                    <li>Planification stratégique</li>
+                    <li>Conduite du changement</li>
+                    <li>Évaluation de performance</li>
+                    <li>Formation et développement RH</li>
+                </ul>
+            </div>
+            <div class="competence-card fade-in">
+                <h3>📊 Gestion Administrative</h3>
+                <ul>
+                    <li>Coordination de services publics</li>
+                    <li>Suivi-évaluation de projets</li>
+                    <li>Gestion budgétaire</li>
+                    <li>Politique sectorielle</li>
+                    <li>Formation et pédagogie</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compétences linguistiques -->
+    <section class="section" style="background: #f8f9fa;">
+        <h2 class="section-title fade-in">Compétences Linguistiques</h2>
+        <div class="skills-container">
+            <div class="skill-item fade-in">
+                <div class="skill-name">
+                    <span>Français</span>
+                    <span>95%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 95%;"></div>
+                </div>
+            </div>
+            <div class="skill-item fade-in">
+                <div class="skill-name">
+                    <span>Anglais</span>
+                    <span>80%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 80%;"></div>
+                </div>
+            </div>
+            <div class="skill-item fade-in">
+                <div class="skill-name">
+                    <span>Mooré</span>
+                    <span>90%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 90%;"></div>
+                </div>
+            </div>
+            <div class="skill-item fade-in">
+                <div class="skill-name">
+                    <span>Dioula</span>
+                    <span>65%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 65%;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expérience -->
+    <section id="experience" class="section">
+        <h2 class="section-title fade-in">Parcours Professionnel</h2>
+        <div class="timeline">
+            <div class="timeline-item fade-in">
+                <div class="timeline-content">
+                    <div class="timeline-date">2020 - Présent</div>
+                    <h3>Consultant & Responsable d'Agence</h3>
+                    <p>IMPACT COMMUNICATION et SERVICES - Direction stratégique et opérationnelle d'une agence de communication spécialisée dans le digital et les relations publiques.</p>
+                </div>
+            </div>
+            <div class="timeline-item fade-in">
+                <div class="timeline-content">
+                    <div class="timeline-date">2014 - 2020</div>
+                    <h3>Chef de Service Web</h3>
+                    <p>Direction de la Communication et de la Presse Ministérielle - Ministère de l'Éducation Nationale. Gestion des plateformes digitales et stratégies de communication web.</p>
+                </div>
+            </div>
+            <div class="timeline-item fade-in">
+                <div class="timeline-content">
+                    <div class="timeline-date">2023</div>
+                    <h3>Collaborations Internationales</h3>
+                    <p>Projets avec la Banque Mondiale (PAAQE), Programme Alimentaire Mondial (PAM), et diverses institutions pour des campagnes de sensibilisation et communication.</p>
+                </div>
+            </div>
+            <div class="timeline-item fade-in">
+                <div class="timeline-content">
+                    <div class="timeline-date">2011 - 2014</div>
+                    <h3>Agent Communication</h3>
+                    <p>Direction de la Communication et de la Presse Ministérielle - Développement des compétences en relations publiques et communication institutionnelle.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formation -->
+    <section id="formation" class="section" style="background: #f8f9fa;">
+        <h2 class="section-title fade-in">Formation Académique</h2>
+        <div class="competences-grid">
+            <div class="competence-card fade-in">
+                <h3>🎓 Master en Communication</h3>
+                <p><strong>Aube Nouvelle (2013-2015)</strong></p>
+                <p>Spécialisation en communication d'entreprise et stratégies digitales</p>
+            </div>
+            <div class="competence-card fade-in">
+                <h3>🏛️ Brevet ENAM</h3>
+                <p><strong>École Nationale d'Administration et de Magistrature (2009-2011)</strong></p>
+                <p>Administration Scolaire et Universitaire</p>
+            </div>
+            <div class="competence-card fade-in">
+                <h3>📚 Licence Professionnelle</h3>
+                <p><strong>ISIG International (2012-2013)</strong></p>
+                <p>Communication d'entreprise</p>
+            </div>
+            <div class="competence-card fade-in">
+                <h3>📖 Licence Lettres Modernes</h3>
+                <p><strong>Université de Ouagadougou (2012-2013)</strong></p>
+                <p>Formation littéraire et linguistique</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+        <h2 class="section-title fade-in">Prenons Contact</h2>
+        <div class="contact-container">
+            <div class="contact-info fade-in">
+                <h3>Informations de Contact</h3>
+                <p style="margin: 2rem 0;">Basé à Ouagadougou, Burkina Faso, je suis disponible pour des collaborations locales et internationales dans le domaine de la communication digitale, du management et de la formation.</p>
+                
+                <div style="margin: 1.5rem 0;">
+                    <h4>🏆 Distinction</h4>
+                    <p>Chevalier de l'Ordre des Palmes Académiques</p>
+                </div>
+                
+                <div style="margin: 1.5rem 0;">
+                    <h4>🌍 Langues</h4>
+                    <p>Français (Expert) • Anglais (Courant) • Mooré (Natif) • Dioula (Intermédiaire)</p>
+                </div>
+                
+                <div style="margin: 1.5rem 0;">
+                    <h4>💼 Domaines d'Intervention</h4>
+                    <p>Communication Digitale • Management • Formation • Consulting</p>
+                </div>
+            </div>
+            
+            <div class="contact-form fade-in">
+                <h3 style="color: #1a237e; margin-bottom: 1.5rem;">Envoyez un Message</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Nom complet</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Sujet</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button" style="width: 100%;">Envoyer le Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Laya Ibrahim Bambavoussé OUEDRAOGO. Tous droits réservés.</p>
+        <p>Expert en Communication Digitale & Management | Ouagadougou, Burkina Faso</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(26, 35, 126, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(26, 35, 126, 0.95)';
+            }
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Animate skill bars when visible
+        const skillObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBar = entry.target.querySelector('.skill-progress');
+                    if (progressBar) {
+                        const width = progressBar.style.width;
+                        progressBar.style.width = '0%';
+                        setTimeout(() => {
+                            progressBar.style.width = width;
+                        }, 200);
+                    }
+                }
+            });
+        });
+
+        document.querySelectorAll('.skill-item').forEach(el => {
+            skillObserver.observe(el);
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Merci pour votre message ! Je vous répondrai dans les plus brefs délais.');
+            this.reset();
+        });
+
+        // Timeline animation
+        const timelineObserver = new IntersectionObserver(function(entries) {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateX(0)';
+                    }, index * 200);
+                }
+            });
+        });
+
+        document.querySelectorAll('.timeline-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateX(-50px)';
+            el.style.transition = 'all 0.6s ease';
+            timelineObserver.observe(el);
+        });
+    </script>
+</body>
+</html>
